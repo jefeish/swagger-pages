@@ -1,6 +1,5 @@
-<a href="https://jefeish.github.io/swagger-pages/" target="_blank" rel="noopener noreferrer">Open GitHub Swagger Pages</a>
-
-<details><summary>Add this to the Open API schema to enable Authorization</summary>
+[Open the GitHub Rest API Swagger Page](https://jefeish.github.io/swagger-pages/)
+<details><summary>Note: Add this code to the GitHub Open API schema to enable Authorization</summary>
 <p>
 Ref: <a href="https://swagger.io/docs/specification/authentication/bearer-authentication/">Describing Bearer Authentication</a>
     
