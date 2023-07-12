@@ -2,7 +2,9 @@
 
 <details><summary>Add this to the Open API schema to enable Authorization</summary>
 <p>
-Note: Find the "compenents:" section and add the code
+Ref: <a href="https://swagger.io/docs/specification/authentication/bearer-authentication/">Describing Bearer Authentication</a>
+    
+Note: Find the <b>"components:"</b> section and add the code
     
 ```yaml
 security:
