@@ -1,5 +1,23 @@
 <a href="https://jefeish.github.io/swagger-pages/" target="_blank" rel="noopener noreferrer">Open GitHub Swagger Pages</a>
 
+<details><summary>Add this to the Open API schema to enable Authorization</summary>
+<p>
+Note: Find the "compenents:" section and add the code
+    
+```yaml
+security:
+  - bearerAuth: [] 
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+```
+
+</p>
+</details> 
+
 # How to host Swagger API documentation with GitHub Pages
 [<img alt="The blog of Peter Evans: How to Host Swagger Documentation With Github Pages" title="View blog post" src="https://peterevans.dev/img/blog-published-badge.svg">](https://peterevans.dev/posts/how-to-host-swagger-docs-with-github-pages/)
 
