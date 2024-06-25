@@ -118,18 +118,6 @@ paths:
         '404':
           description: Role or user not found
 
-  /users/{userId}/roles/{roleId}:
-    parameters:
-      - name: userId
-        in: path
-        required: true
-        schema:
-          type: integer
-      - name: roleId
-        in: path
-        required: true
-        schema:
-          type: integer
     delete:
       summary: Remove a role from a user
       responses:
