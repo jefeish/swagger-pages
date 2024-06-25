@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: CRUD API for Users with Roles, Emails, and Profiles
+  version: 1.0.0
+paths:
+  /users:
+    get:
+      summary: Retrieve all users
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /users/{userId}:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Retrieve a user by ID
+      responses:
+        '200':
+          description: User found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+    put:
+      summary: Update a user by ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+    delete:
+      summary: Delete a user by ID
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: User not found
+
+  /users/{userId}/roles:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Retrieve user roles by user ID
+      responses:
+        '200':
+          description: User roles retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+        '404':
+          description: User not found
+
+  /users/{userId}/emails:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Retrieve user emails by user ID
+      responses:
+        '200':
+          description: User emails retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Email'
+        '404':
+          description: User not found
+
+  /users/{userId}/profile:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Retrieve user profile by user ID
+      responses:
+        '200':
+          description: User profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '404':
+          description: User not found
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          example: john.doe@example.com
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        profile:
+          $ref: '#/components/schemas/Profile'
+
+    UserInput:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+
+    Role:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Admin
+
+    Email:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        email:
+          type: string
+          example: john.doe@example.com
+
+    Profile:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        bio:
+          type: string
+          example: A software engineer passionate about coding
