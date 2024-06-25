@@ -118,6 +118,29 @@ paths:
         '404':
           description: Role or user not found
 
+    post:
+      summary: Associate a user with a role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                  description: The ID of the user to associate with a role.
+                roleId:
+                  type: integer
+                  description: The ID of the role to associate with the user.
+      responses:
+        '201':
+          description: User associated with role successfully
+        '400':
+          description: Invalid input
+        '404':
+          description: User or role not found
+
     delete:
       summary: Remove a role from a user
       responses:
